@@ -1,0 +1,16 @@
+version: '3'
+services:
+  app:
+    container_name: pollser
+    restart: always
+    build: .
+    volumes: ['./:/usr/src/app']
+    ports:
+      - '8080:3002'
+    external_links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27017:27017'
